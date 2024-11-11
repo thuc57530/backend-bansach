@@ -1,0 +1,35 @@
+extends ../../layout/default.pug
+
+block main 
+    if(product.title)
+       h1(class="mb-4") #{product.title}
+    if(product.price)
+       div(class="mb-4") Gia : #{product.price}$
+    if(product. discountPercentage)
+       div(class="mb-4") Giam gia: #{product.discountPercentage}%
+    if(product.stock)
+       div(class="mb-4") Con lai: #{product.stock}
+    if(product.thumbnail)
+       div(class="mb-4")
+        img(
+            src=product.thumbnail
+            style="width : 100px"
+        )
+    if(product.Status)
+       div(class="mb-4")
+         span Trang thai:
+         if (product.Status === "active")
+            span(class="badge badge-success") Hoat dong
+         else
+            span(class="badge badge-danger") Dung hoat dong
+    if (product.position)
+        div(class="mb-4") Vi tri: #{product.position}
+    if (product.description)
+        div(class="mb-4") #{product.description}    
+    a(
+        href=`${prifixAdmin}/products/edit/${product.id}`
+        class="btn btn-warning"
+    ) Chinh sua 
+
+
+    script(src="/admin/js/product.js") 
